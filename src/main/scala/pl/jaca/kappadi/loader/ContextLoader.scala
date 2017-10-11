@@ -11,12 +11,12 @@ import pl.jaca.kappadi.loader.service.{ServiceInfo, ServiceLoader}
   */
 private class ContextLoader extends LazyLogging  {
 
-  def loadContext(preloadedContext: Object): JavaContextHolder = {
+  def loadContext(serviceRootPackage: String, preloadedContext: Object): JavaContextHolder = {
     try {
       logger.info("Loading the application context...")
       val serviceLoader = new ServiceLoader
       val contextInfo = getContextInfo(preloadedContext)
-      val services = serviceLoader.loadServices(List(contextInfo))
+      val services = serviceLoader.loadServices(serviceRootPackage, List(contextInfo))
       logger.info(s"Application context loaded (Total services: ${services.length})")
       new JavaContextHolder(services)
     } catch {

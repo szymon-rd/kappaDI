@@ -16,10 +16,10 @@ public class Context {
 
     private JavaContextHolder contextHolder;
 
-    public static Context create() {
+    public static Context create(String serviceRootPackage) {
         ContextLoader loader = new ContextLoader();
         Context context = new Context();
-        JavaContextHolder contextHolder = loader.loadContext(context);
+        JavaContextHolder contextHolder = loader.loadContext(serviceRootPackage, context);
         context.setContextHolder(contextHolder);
         return context;
     }

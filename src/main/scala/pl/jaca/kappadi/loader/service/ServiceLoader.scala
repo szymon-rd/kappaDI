@@ -9,17 +9,17 @@ import pl.jaca.kappadi.graph.DirectedAcyclicGraph
   */
 private[loader] class ServiceLoader extends LazyLogging  {
 
-  def loadServices(preloadedServices: List[ServiceInfo]): List[(ServiceInfo, Object)] = {
+  def loadServices(serviceRootPackage: String, preloadedServices: List[ServiceInfo]): List[(ServiceInfo, Object)] = {
     logger.info("Loading application services...")
-    val servicesInfo = resolveServicesInfo() ++ preloadedServices
+    val servicesInfo = resolveServicesInfo(serviceRootPackage) ++ preloadedServices
     logger.info("Creating service graph...")
     val serviceGraph = createGraph(servicesInfo)
     logger.info("Instantiating services...")
     createServices(serviceGraph).toList
   }
 
-  private def resolveServicesInfo(): Set[ServiceInfo] = {
-    val serviceResolver = new ServiceResolver(new ClassResolver(ServiceLoader.ServiceRootPackage))
+  private def resolveServicesInfo(serviceRootPackage: String): Set[ServiceInfo] = {
+    val serviceResolver = new ServiceResolver(new ClassResolver(serviceRootPackage))
     serviceResolver.resolveServiceInfo()
   }
 
@@ -38,8 +38,4 @@ private[loader] class ServiceLoader extends LazyLogging  {
       .accumulator
   }
 
-}
-
-object ServiceLoader {
-  val ServiceRootPackage = "pl.warp"
 }

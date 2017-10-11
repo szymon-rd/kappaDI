@@ -1,5 +1,5 @@
 # kappaDI
-Easy to use Scala/Java DI framework
+Easy to use Scala/Java DI library
 
 ### Usage
 

@@ -3,7 +3,7 @@ Easy to use Scala/Java DI library
 
 ### Usage
 
-The code below presents a simple coffee machine model written with kappaDI and Java. In fact, you could only use Context class and @Service annotation to build a 
+The code below presents a simple coffee machine model written with kappaDI and Java.
 All classes are located in a package 'example'
 
 ```java

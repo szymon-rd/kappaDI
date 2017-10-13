@@ -69,7 +69,7 @@ import pl.jaca.kappadi.service.Service;
 
 @Service
 @Qualified(qualifier = "water")
-public static class WaterHeater implements Heater {
+public class WaterHeater implements Heater {
 
     public void heat() {
         System.out.println("Heating with water...");
@@ -86,7 +86,7 @@ import pl.jaca.kappadi.service.Service;
 @Service
 // You can create qualifiers to allow resolving services with the same type
 @Qualified(qualifier = "hotPlate")
-public static class HotPlateHeater implements Heater {
+public class HotPlateHeater implements Heater {
 
     public void heat() {
         System.out.println("Heating with a hot plate...");
